@@ -2,8 +2,7 @@
 ###### SOURCES ######################################
 
 
-SRCS =	
-		main.c
+SRCS =	main.c utils.c
 
 
 ###### VARIABLES ####################################
@@ -11,7 +10,7 @@ SRCS =
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 VPATH = assets/get_next_line/:struct_init/:files/:process/
 
