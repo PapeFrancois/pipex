@@ -2,7 +2,8 @@
 ###### SOURCES ######################################
 
 
-SRCS =	main.c utils.c
+SRCS =	mandatory/main.c \
+		mandatory/utils.c
 
 
 ###### VARIABLES ####################################
@@ -12,7 +13,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-VPATH = assets/get_next_line/:struct_init/:files/:process/
+VPATH = mandatory/
 
 OBJ_DIR = obj_files
 

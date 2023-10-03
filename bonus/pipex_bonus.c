@@ -1,28 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 15:59:33 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/02 18:46:11 by hepompid         ###   ########.fr       */
+/*   Created: 2023/10/03 14:46:55 by hepompid          #+#    #+#             */
+/*   Updated: 2023/10/03 14:46:56 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include "assets/libft/libft.h"
-
-void	free_table(char **table);
-char	*path_finder(char *arg, char **envp);
-void	free_table(char **table);
-
-#endif

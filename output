@@ -1,9 +1,0 @@
-assets
-input
-main.c
-Makefile
-obj_files
-output
-pipex
-pipex.h
-utils.c
