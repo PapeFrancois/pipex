@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:59:29 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/02 18:45:50 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/03 12:47:31 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	child2(char **argv, char **envp, int *fd)
 {
-	int 	fd_output;
+	int		fd_output;
 	char	**split_arg;
 	char	*final_path;
-	
+
 	printf("entree child2\n");
 	split_arg = NULL;
 	close(fd[1]);
@@ -30,7 +30,7 @@ int	child2(char **argv, char **envp, int *fd)
 	close(fd_output);
 	final_path = path_finder(argv[3], envp);
 	split_arg = ft_split(argv[3], ' ');
-		printf("final path = %s\n", final_path);
+	printf("final path = %s\n", final_path);
 	int i = 0;
 	while (split_arg[i])
 	{
@@ -40,15 +40,15 @@ int	child2(char **argv, char **envp, int *fd)
 	execve(final_path, split_arg, NULL);
 	free(final_path);
 	free_table(split_arg);
-	return(0);
+	return (0);
 }
 
 int	child(char **argv, char **envp, int *fd)
 {
-	int 	fd_input;
+	int		fd_input;
 	char	**split_arg;
 	char	*final_path;
-	
+
 	printf("entree child1\n");
 	split_arg = NULL;
 	close(fd[0]);
@@ -71,16 +71,14 @@ int	child(char **argv, char **envp, int *fd)
 	execve(final_path, split_arg, NULL);
 	free(final_path);
 	free_table(split_arg);
-	return(0);
+	return (0);
 }
 
 int	main(int argc, char **argv, char **envp)
 {
-	(void)argv;
-	(void)argc;
 	int	fd[2];
-	int pid[2];
-	
+	int	pid[2];
+
 	if (argc < 5)
 		return (0);
 	if (pipe(fd) == -1)
