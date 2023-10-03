@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:59:29 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/03 14:33:25 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:35:56 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	child2(char **argv, char **envp, int *fd)
 	{
 		free_table(split_arg);
 		free(final_path);
+		exit(0);
 	}
 }
 
@@ -61,6 +62,7 @@ void	child(char **argv, char **envp, int *fd)
 	{
 		free_table(split_arg);
 		free(final_path);
+		exit(0);
 	}
 }
 
