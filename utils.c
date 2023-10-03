@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:44:28 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/03 12:47:45 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/03 13:58:43 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ char	*path_finder(char *arg, char **envp)
 		exit(0);
 	}
 	if (access(split_arg[0], F_OK) == 0)
-		final_path = split_arg[0];
+		final_path = ft_strdup(split_arg[0]);
 	else
 		final_path = check_access(list_of_paths, split_arg[0]);
 	free_table(list_of_paths);
