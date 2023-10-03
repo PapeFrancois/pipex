@@ -6,7 +6,14 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:46:55 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/03 14:46:56 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:49:56 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "pipex_bonus.h"
+
+int main()
+{
+	printf("hello world\n");
+	return (0);
+}

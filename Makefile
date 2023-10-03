@@ -2,9 +2,10 @@
 ###### SOURCES ######################################
 
 
-SRCS =	mandatory/main.c \
+SRCS =	mandatory/pipex.c \
 		mandatory/utils.c
 
+SRCS_BONUS = bonus/pipex_bonus.c
 
 ###### VARIABLES ####################################
 
@@ -13,11 +14,13 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror -g
 
-VPATH = mandatory/
+VPATH = mandatory/:bonus/
 
 OBJ_DIR = obj_files
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
+
+OBJS_BONUS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS_BONUS:.c=.o)))
 
 LIBFT = assets/libft/libft.a
 
@@ -50,5 +53,8 @@ fclean: clean
 	cd assets/libft && rm -rf libft.a
 
 re: fclean all
+
+bonus: $(OBJ_DIR) $(LIBFT) $(OBJS_BONUS)
+	$(CC) $(OBJS_BONUS) $(LIBFT) -o $(NAME)
 
 .PHONY: all clean fclean re
