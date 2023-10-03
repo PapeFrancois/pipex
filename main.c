@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:59:29 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/03 14:00:54 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/03 14:33:25 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	child2(char **argv, char **envp, int *fd)
 
 	split_arg = NULL;
 	close(fd[1]);
-	fd_output = open((argv[4]), O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU);
+	fd_output = open((argv[4]), O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd_output == -1)
 		exit (0);
 	dup2(fd[0], STDIN_FILENO);
@@ -31,7 +31,11 @@ void	child2(char **argv, char **envp, int *fd)
 	if (!final_path)
 		return ;
 	split_arg = ft_split(argv[3], ' ');
-	execve(final_path, split_arg, envp);
+	if (execve(final_path, split_arg, envp) == -1)
+	{
+		free_table(split_arg);
+		free(final_path);
+	}
 }
 
 void	child(char **argv, char **envp, int *fd)
@@ -53,7 +57,11 @@ void	child(char **argv, char **envp, int *fd)
 	if (!final_path)
 		return ;
 	split_arg = ft_split(argv[2], ' ');
-	execve(final_path, split_arg, envp);
+	if (execve(final_path, split_arg, envp) == -1)
+	{
+		free_table(split_arg);
+		free(final_path);
+	}
 }
 
 int	main(int argc, char **argv, char **envp)

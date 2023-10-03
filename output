@@ -1,2 +1,9 @@
-capitaine flam tu n'es pas 
-capitaine flam 
+assets
+input
+main.c
+Makefile
+obj_files
+output
+pipex
+pipex.h
+utils.c
