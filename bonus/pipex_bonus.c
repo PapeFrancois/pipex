@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:46:55 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/04 15:29:57 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:04:12 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv, char **envp)
 	nofcommands = argc - 3;
 	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
 		nofcommands = argc - 4;
+	printf("nofcommands = %d\n", nofcommands);
 	fd = fd_creat(nofcommands);
 	fd = fd_init(argc, argv, fd, nofcommands);
 
@@ -35,6 +36,7 @@ int	main(int argc, char **argv, char **envp)
 		i++;
 	}
 	
+	close_all_fd(fd, nofcommands);
 	free_fd(fd, nofcommands);
 	return (0);
 }

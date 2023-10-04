@@ -8,7 +8,7 @@ SRCS =	mandatory/pipex.c \
 SRCS_BONUS =	bonus/pipex_bonus.c \
 				bonus/utils_bonus.c \
 				bonus/fd_bonus.c \
-				bonus/free.c
+				bonus/free_bonus.c
 
 ###### VARIABLES ####################################
 

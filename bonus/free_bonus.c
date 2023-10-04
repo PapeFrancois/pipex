@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:39:54 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/04 15:40:05 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/04 16:05:25 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	free_fd(int **fd, int nofcommands)
 	int	i;
 
 	i = 0;
-	while (i > nofcommands)
+	while (i < nofcommands)
 	{
 		free(fd[i]);
 		i++;

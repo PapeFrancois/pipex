@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:47:09 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/04 15:42:06 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:59:47 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 int		**fd_creat(int nofcommands);
 int		**fd_init(int argc, char **argv, int **fd, int nofcommands);
 void	free_fd(int **fd, int nofcommands);
-void	close_all_fd(int **fd, int nofprocess);
+void	malloc_error(int **fd, int i);
+void	close_all_fd(int **fd, int nofcommands);
 
 #endif
