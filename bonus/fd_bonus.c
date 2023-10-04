@@ -6,34 +6,44 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:47:43 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/04 15:29:18 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:53:28 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void	malloc_error(int **fd, int i)
-{
-	while (i >= 0)
-	{
-		free(fd[i]);
-		i--;
-	}
-	free(fd);
-	exit(0);
-}
-
-void	free_fd(int **fd, int nofcommands)
+void	close_all_fd(int **fd, int nofprocess)
 {
 	int	i;
 
 	i = 0;
-	while (i > nofcommands)
+	while (i < nofprocess)
 	{
-		free(fd[i]);
+		close(fd[i][0]);
+		close(fd[i][1]);
 		i++;
 	}
-	free(fd);
+}
+
+void	close_unused_fd(int **fd, int nofprocess, int benchmark)
+{
+	int	i;
+
+	i = 0;
+	while (i < nofprocess - 1)
+	{
+		if (i != benchmark)
+		{
+			close(fd[i][0]);
+			close(fd[i + 1][1]);
+		}
+		i++;
+	}
+	if (benchmark != nofprocess - 1)
+	{
+		close(fd[nofprocess - 1][0]);
+		close(fd[0][1]);
+	}
 }
 
 int	**fd_init(int argc, char **argv, int **fd, int nofcommands)
