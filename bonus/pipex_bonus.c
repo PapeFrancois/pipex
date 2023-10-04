@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:46:55 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/04 16:15:59 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:34:05 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,29 @@ int	*pid_creat(int nofcommands, int **fd)
 	return (pid);
 }
 
+void	forker(int **fd, int *pid, int nofcommands, char **envp, char **argv)
+{
+	int	i;
+
+	i = 0;
+	while (i < nofcommands)
+	{
+		pid[i] = fork();
+		if (pid[i] == -1)
+			error(fd, pid, nofcommands);
+		if (pid[i] == 0)
+		{
+			
+		}
+		i++;
+	}
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	int	**fd;
 	int	*pid;
 	int	nofcommands;
-
-	(void)envp;
 
 	if (argc < 5 || (argc < 6 && ft_strncmp(argv[1], "here_doc", 8) == 0))
 		return (0);
@@ -45,3 +61,5 @@ int	main(int argc, char **argv, char **envp)
 	free_fd(fd, nofcommands);
 	return (0);
 }
+
+// stocker fd, pid et nofcommands dans une structure

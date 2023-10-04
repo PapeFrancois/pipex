@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:39:54 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/04 16:05:25 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/04 18:31:28 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,12 @@ void	free_fd(int **fd, int nofcommands)
 		i++;
 	}
 	free(fd);
+}
+
+void	error(int **fd, int *pid, int nofcommands)
+{
+	free_fd(fd, nofcommands);
+	free(pid);
+	close_all_fd(fd, nofcommands);
+	exit(0);
 }
