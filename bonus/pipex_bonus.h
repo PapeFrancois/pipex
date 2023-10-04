@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:47:09 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/03 14:47:55 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:27:49 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <sys/wait.h>
 # include "../assets/libft/libft.h"
 
-
+int		**fd_creat(int nofcommands);
+int		**fd_init(int argc, char **argv, int **fd, int nofcommands);
+void	free_fd(int **fd, int nofcommands);
 
 #endif

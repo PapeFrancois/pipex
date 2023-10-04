@@ -6,7 +6,13 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:47:00 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/03 14:47:01 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/04 15:17:28 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "pipex_bonus.h"
+
+void	test()
+{
+	printf("entreee\n");
+}
