@@ -2,32 +2,35 @@
 ###### SOURCES ######################################
 
 
-SRCS =	mandatory/pipex.c \
-		mandatory/utils.c
+SRCS =			mandatory/pipex.c \
+				mandatory/utils.c
 
 SRCS_BONUS =	bonus/pipex_bonus.c \
 				bonus/fd_bonus.c \
 				bonus/free_bonus.c \
-				bonus/path_bonus.c
+				bonus/path_bonus.c \
+				bonus/here_doc_bonus.c \
+				assets/get_next_line/get_next_line.c \
+				assets/get_next_line/get_next_line_utils.c
 
 ###### VARIABLES ####################################
 
 
-CC = cc
+CC = 			cc
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = 		-Wall -Wextra -Werror -g
 
-VPATH = mandatory/:bonus/
+VPATH = 		mandatory/:bonus/:assets/get_next_line/
 
-OBJ_DIR = obj_files
+OBJ_DIR = 		obj_files
 
-OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
+OBJS = 			$(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
-OBJS_BONUS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS_BONUS:.c=.o)))
+OBJS_BONUS = 	$(addprefix $(OBJ_DIR)/, $(notdir $(SRCS_BONUS:.c=.o)))
 
-LIBFT = assets/libft/libft.a
+LIBFT = 		assets/libft/libft.a
 
-NAME = pipex
+NAME = 			pipex
 
 
 ###### RULES #######################################
