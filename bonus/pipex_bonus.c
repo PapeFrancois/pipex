@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:46:55 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/05 12:01:46 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:43:41 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,13 @@ void	child(char *arg, char **envp, t_keyvar key, int i)
 	if (!final_path)
 		return ;
 	split_arg = ft_split(arg, ' ');
-	if (execve(final_path, split_arg, envp) == -1)
-	{
-		free_table(split_arg);
-		free(final_path);
-		error(key);
-	}
+	execve(final_path, split_arg, envp);
+	free_table(split_arg);
+	free(final_path);
+	error(key);
 }
 
-void	forker(t_keyvar key, char **argv, char **envp)
+void	process(t_keyvar key, char **argv, char **envp)
 {
 	int	i;
 	int	first_command;
@@ -83,22 +81,12 @@ void	forker(t_keyvar key, char **argv, char **envp)
 	}
 }
 
-void	waiter(t_keyvar key)
-{
-	int	i;
-
-	i = 0;
-	while (i < key.nofcommands)
-	{
-		waitpid(key.pid[i], NULL, 0);
-		i++;
-	}
-}
-
 int	main(int argc, char **argv, char **envp)
 {
 	t_keyvar	key;
+	int			i;
 
+	printf("argc = %d\n", argc);
 	if (argc < 5 || (argc < 6 && ft_strncmp(argv[1], "here_doc", 8) == 0))
 		return (0);
 	key.nofcommands = argc - 3;
@@ -106,12 +94,16 @@ int	main(int argc, char **argv, char **envp)
 		key.nofcommands = argc - 4;
 	key.fd = fd_creat(key.nofcommands);
 	key.pid = pid_creat(key.nofcommands, key.fd);
-	key.fd = fd_init(argc, argv, key.fd, key.nofcommands);
-	forker(key, argv, envp);
+	key.fd = fd_init(argc, argv, key);
+	process(key, argv, envp);
 	close_all_fd(key.fd, key.nofcommands);
+	i = 0;
+	while (i < key.nofcommands)
+	{
+		waitpid(key.pid[i], NULL, 0);
+		i++;
+	}
 	free_fd(key.fd, key.nofcommands);
 	free(key.pid);
 	return (0);
 }
-
-// stocker fd, pid et nofcommands dans une structure

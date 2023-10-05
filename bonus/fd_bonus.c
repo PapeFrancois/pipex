@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:47:43 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/04 16:05:10 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/05 15:03:07 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,33 +46,30 @@ void	close_unused_fd(int **fd, int nofcommands, int benchmark)
 	}
 }
 
-int	**fd_init(int argc, char **argv, int **fd, int nofcommands)
+int	**fd_init(int argc, char **argv, t_keyvar k)
 {
 	int	i;
 
-	if (nofcommands == argc - 3)
+	if (k.nofcommands == argc - 3)
 	{
-		fd[0][0] = open(argv[1], O_RDONLY);
-		fd[0][1] = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		k.fd[0][0] = open(argv[1], O_RDONLY);
+		k.fd[0][1] = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	}
 	else
 	{
 		// fd[0][0] = heredoc();
-		fd[0][1] = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
+		k.fd[0][1] = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	}
 	i = 0;
-	while (++i < nofcommands)
-		pipe(fd[i]);
+	while (++i < k.nofcommands)
+		pipe(k.fd[i]);
 	i = -1;
-	while (++i < nofcommands)
+	while (++i < k.nofcommands)
 	{
-		if (fd[i][0] == -1 || fd[i][1] == -1)
-		{
-			free_fd(fd, nofcommands);
-			exit (0);
-		}
+		if (k.fd[i][0] == -1 || k.fd[i][1] == -1)
+			error(k);
 	}
-	return (fd);
+	return (k.fd);
 }
 
 int	**fd_creat(int nofcommands)

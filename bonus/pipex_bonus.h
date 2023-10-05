@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:47:09 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/05 11:43:58 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:46:11 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_keyvar
 }	t_keyvar;
 
 int		**fd_creat(int nofcommands);
-int		**fd_init(int argc, char **argv, int **fd, int nofcommands);
+int		**fd_init(int argc, char **argv, t_keyvar key);
 void	free_fd(int **fd, int nofcommands);
 void	malloc_error(int **fd, int i);
 void	close_all_fd(int **fd, int nofcommands);

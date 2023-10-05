@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:59:29 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/04 14:18:19 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:45:35 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,10 @@ void	child2(char **argv, char **envp, int *fd)
 	if (!final_path)
 		return ;
 	split_arg = ft_split(argv[3], ' ');
-	if (execve(final_path, split_arg, envp) == -1)
-	{
-		free_table(split_arg);
-		free(final_path);
-		exit(0);
-	}
+	execve(final_path, split_arg, envp);
+	free_table(split_arg);
+	free(final_path);
+	exit(0);
 }
 
 void	child(char **argv, char **envp, int *fd)
@@ -58,12 +56,10 @@ void	child(char **argv, char **envp, int *fd)
 	if (!final_path)
 		return ;
 	split_arg = ft_split(argv[2], ' ');
-	if (execve(final_path, split_arg, envp) == -1)
-	{
-		free_table(split_arg);
-		free(final_path);
-		exit(0);
-	}
+	execve(final_path, split_arg, envp);
+	free_table(split_arg);
+	free(final_path);
+	exit(0);
 }
 
 int	main(int argc, char **argv, char **envp)

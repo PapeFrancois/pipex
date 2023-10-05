@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:39:54 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/05 12:03:51 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/05 14:21:29 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	free_fd(int **fd, int nofcommands)
 
 void	error(t_keyvar key)
 {
+	close_all_fd(key.fd, key.nofcommands);
 	free_fd(key.fd, key.nofcommands);
 	free(key.pid);
-	close_all_fd(key.fd, key.nofcommands);
 	exit(0);
 }
