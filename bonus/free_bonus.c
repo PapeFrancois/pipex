@@ -6,11 +6,24 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:39:54 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/04 18:31:28 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/05 12:03:51 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
+
+void	free_table(char **table)
+{
+	int	i;
+
+	i = 0;
+	while (table[i])
+	{
+		free(table[i]);
+		i++;
+	}
+	free(table);
+}
 
 void	malloc_error(int **fd, int i)
 {
@@ -36,10 +49,10 @@ void	free_fd(int **fd, int nofcommands)
 	free(fd);
 }
 
-void	error(int **fd, int *pid, int nofcommands)
+void	error(t_keyvar key)
 {
-	free_fd(fd, nofcommands);
-	free(pid);
-	close_all_fd(fd, nofcommands);
+	free_fd(key.fd, key.nofcommands);
+	free(key.pid);
+	close_all_fd(key.fd, key.nofcommands);
 	exit(0);
 }
