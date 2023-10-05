@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 11:42:25 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/05 11:43:18 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/05 16:36:07 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ char	*path_finder(char *arg, char **envp)
 	char	**split_arg;
 	char	**list_of_paths;
 
+	if (arg[0] == 0)
+		return (NULL);
 	final_path = NULL;
 	split_arg = NULL;
 	list_of_paths = path_init(envp);
