@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 18:44:28 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/05 16:34:56 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/06 17:55:57 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ char	**path_init(char **envp)
 	i = 0;
 	while (envp[i] && ft_strncmp(envp[i], "PATH=", 5) != 0)
 		i++;
-	if (ft_strncmp(envp[i], "PATH=", 5) == 0)
+	if (envp[i] && ft_strncmp(envp[i], "PATH=", 5) == 0)
 		list_of_paths = ft_split(envp[i], ':');
-	if (!list_of_paths)
+	if (!envp[i] || !list_of_paths)
 		return (NULL);
 	temp = ft_substr(list_of_paths[0], 5, ft_strlen(list_of_paths[0]));
 	if (!temp)
@@ -86,6 +86,8 @@ char	*check_access(char **list_of_paths, char *cmd)
 	char	*final_path;
 	int		i;
 
+	if (!list_of_paths)
+		return (NULL);
 	i = 0;
 	while (list_of_paths[i])
 	{
@@ -121,7 +123,8 @@ char	*path_finder(char *arg, char **envp)
 		final_path = ft_strdup(split_arg[0]);
 	else
 		final_path = check_access(list_of_paths, split_arg[0]);
-	free_table(list_of_paths);
+	if (list_of_paths)
+		free_table(list_of_paths);
 	free_table(split_arg);
 	return (final_path);
 }
