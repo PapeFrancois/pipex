@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:47:43 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/05 15:39:23 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/06 15:20:17 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ void	close_all_fd(int **fd, int nofcommands)
 	i = 0;
 	while (i < nofcommands)
 	{
-		close(fd[i][0]);
-		close(fd[i][1]);
+		if (fd[i][0] != -1)
+			close(fd[i][0]);
+		if (fd[i][1] != -1)
+			close(fd[i][1]);
 		i++;
 	}
 }

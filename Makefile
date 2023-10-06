@@ -11,7 +11,6 @@ SRCS_BONUS =	bonus/pipex_bonus.c \
 				bonus/path_bonus.c \
 				bonus/here_doc_bonus.c \
 				assets/get_next_line/get_next_line.c \
-				assets/get_next_line/get_next_line_utils.c
 
 ###### VARIABLES ####################################
 

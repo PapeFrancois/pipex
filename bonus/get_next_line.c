@@ -6,11 +6,11 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 10:05:27 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/05 15:50:24 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:09:31 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "pipex_bonus.h"
 
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 1

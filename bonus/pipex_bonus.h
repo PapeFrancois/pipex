@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:47:09 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/05 15:49:22 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/06 13:09:49 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include "../assets/libft/libft.h"
-# include "../assets/get_next_line/get_next_line.h"
 
 typedef struct s_keyvar
 {
@@ -40,5 +39,6 @@ void	free_table(char **table);
 char	*path_finder(char *arg, char **envp);
 int		here_doc(char *limiter);
 char	*ft_strjoin_free(char const *s1, char const *s2);
+char	*get_next_line(int fd);
 
 #endif
