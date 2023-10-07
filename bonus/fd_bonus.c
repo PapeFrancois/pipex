@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 14:47:43 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/06 15:20:17 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:23:42 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int	**fd_init(int argc, char **argv, t_keyvar k)
 		k.fd[0][0] = here_doc(argv[2]);
 		k.fd[0][1] = open(argv[argc - 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
 	}
+	if (k.fd[0][0] == -1 || k.fd[0][1] == -1)
+		perror("error");
 	i = 0;
 	while (++i < k.nofcommands)
 		pipe(k.fd[i]);
