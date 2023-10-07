@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 14:46:55 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/07 19:18:13 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:29:38 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ void	child(char *arg, char **envp, t_keyvar key, int i)
 	close_unused_fd(key.fd, key.nofcommands, i);
 	duptwo(key, i);
 	final_path = path_finder(arg, envp);
-	if (!final_path)
-		return ;
 	split_arg = ft_split(arg, ' ');
-	execve(final_path, split_arg, envp);
+	if (final_path)
+		execve(final_path, split_arg, envp);
 	write(2, "error : command not found\n", 27);
 	free_table(split_arg);
-	free(final_path);
+	if (final_path)
+		free(final_path);
 	error(key);
 }
 
