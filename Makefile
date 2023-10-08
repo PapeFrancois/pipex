@@ -62,4 +62,4 @@ re: fclean all
 bonus: $(OBJ_DIR) $(LIBFT) $(OBJS_BONUS)
 	$(CC) $(OBJS_BONUS) $(LIBFT) -o $(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
