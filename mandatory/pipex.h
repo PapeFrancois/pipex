@@ -6,7 +6,7 @@
 /*   By: hepompid <hepompid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:59:33 by hepompid          #+#    #+#             */
-/*   Updated: 2023/10/04 15:32:39 by hepompid         ###   ########.fr       */
+/*   Updated: 2023/10/08 11:35:59 by hepompid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,5 @@
 
 void	free_table(char **table);
 char	*path_finder(char *arg, char **envp);
-void	free_table(char **table);
 
 #endif

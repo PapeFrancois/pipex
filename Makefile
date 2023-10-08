@@ -2,24 +2,24 @@
 ###### SOURCES ######################################
 
 
-SRCS =			mandatory/pipex.c \
-				mandatory/utils.c
+SRCS =			pipex.c \
+				utils.c
 
-SRCS_BONUS =	bonus/pipex_bonus.c \
-				bonus/fd_bonus.c \
-				bonus/free_bonus.c \
-				bonus/path_bonus.c \
-				bonus/here_doc_bonus.c \
-				assets/get_next_line/get_next_line.c \
+SRCS_BONUS =	fd_bonus.c \
+				free_bonus.c \
+				get_next_line.c \
+				here_doc_bonus.c \
+				path_bonus.c \
+				pipex_bonus.c
 
 ###### VARIABLES ####################################
 
 
 CC = 			cc
 
-CFLAGS = 		-Wall -Wextra -Werror -g
+CFLAGS = 		-Wall -Wextra -Werror
 
-VPATH = 		mandatory/:bonus/:assets/get_next_line/
+VPATH = 		mandatory/:bonus/
 
 OBJ_DIR = 		obj_files
 
